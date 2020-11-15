@@ -42,9 +42,11 @@ Controls
   at a depth i (e.g. for a 3x3 cube, holding "1" and pressing "L" will turn
   the center slab).
 
-Other
+Other - Continued by Srinath (hi there! :D)
 ~~~~~
-There are more tools available -- for now, RTFSC.
+I've modified this visualization software to generate a dataset for estimating Quaternion Rotation Matrices using images of a Rubik's Cube in different orientations.
+
+This problem can be solved using Machine Learning and Image Regression, but I'm trying out Image Geometry and Simple Linear Algebra for this! - Stay tuned for more updates.
 
 
 License
