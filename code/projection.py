@@ -41,7 +41,7 @@ class Quaternion:
         self.x = np.asarray(x, dtype=float)
 
     def __repr__(self):
-        return "Quaternion:\n" + self.x.__repr__()
+        return self.x.__repr__()
 
     def __mul__(self, other):
         # multiplication of two quaternions.

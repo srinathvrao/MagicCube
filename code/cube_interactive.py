@@ -73,10 +73,8 @@ class Cube:
 
     # Define rotation angles and axes for the six sides of the cube
     x, y, z = np.eye(3)
-    rots = [Quaternion.from_v_theta(np.eye(3)[0], theta)
-    for theta in (np.pi / 2, -np.pi / 2)]
-    rots += [Quaternion.from_v_theta(np.eye(3)[1], theta)
-    for theta in (np.pi / 2, -np.pi / 2, np.pi, 2 * np.pi)]
+    rots = [Quaternion.from_v_theta(np.eye(3)[0], theta) for theta in (np.pi / 2, -np.pi / 2)]
+    rots += [Quaternion.from_v_theta(np.eye(3)[1], theta) for theta in (np.pi / 2, -np.pi / 2, np.pi, 2 * np.pi)]
 
     # define face movements
     facesdict = dict(F=z, B=-z,
@@ -162,7 +160,6 @@ class Cube:
         """Rotate Face"""
         if layer < 0 or layer >= self.N:
             raise ValueError('layer should be between 0 and N-1')
-
         try:
             f_last, n_last, layer_last = self._move_list[-1]
         except:
@@ -214,8 +211,9 @@ class InteractiveCube(plt.Axes):
             self.cube = Cube(cube)
 
         self._view = view
-        self._start_rot = Quaternion.from_v_theta((1, -1, 0),
-                                                  -np.pi / 6)
+        # self._start_rot = Quaternion((1, -1, 0),
+        #                                           -np.pi / 6)
+        self._start_rot = Quaternion([ 1,2,3,4])
 
         if fig is None:
             fig = plt.gcf()
@@ -237,6 +235,8 @@ class InteractiveCube(plt.Axes):
 
         self._start_xlim = kwargs['xlim']
         self._start_ylim = kwargs['ylim']
+        self._figsave = 0
+        self._figquats = []
 
         # Define movement for up/down arrows or up/down mouse movement
         self._ax_UD = (1, 0, 0)
@@ -282,6 +282,7 @@ class InteractiveCube(plt.Axes):
                          "U/D/L/R/B/F keys turn faces\n"
                          "(hold shift for counter-clockwise)",
                          size=10)
+        # self.rotate(Quaternion([0.0007, 0 , -0.01 , 0]))
 
     def _initialize_widgets(self):
         self._ax_reset = self.figure.add_axes([0.75, 0.05, 0.2, 0.075])
@@ -333,7 +334,7 @@ class InteractiveCube(plt.Axes):
                 self._sticker_polys[i].set_facecolor(colors[i])
 
         self.figure.canvas.draw()
-
+# Initial Quaternion: (0.96592583, -0.1830127 ,  0.1830127 , -0)
     def rotate(self, rot):
         self._current_rot = self._current_rot * rot
 
@@ -438,6 +439,21 @@ class InteractiveCube(plt.Axes):
                 self.rotate(rot1 * rot2)
 
                 self._draw_cube()
+                if self._figsave%10==0:
+                    plt.savefig("images/test"+str(self._figsave)+".jpg")
+                    abcd = ["test"+str(self._figsave)+".jpg"]
+                    # array([0.00834558, 0.00809627, 0.01133022, 0.01168023])
+                    currot = [np.float(ab) for ab in (str(self._current_rot)[7:-2]).replace(" ","").split(",")]
+                    abcd.extend(currot)
+                    self._figquats.append(abcd)
+                    print("Saved ",len(self._figquats))
+                    if len(self._figquats) == 50:
+                        print("Saving data to file..")
+                        with open('quaternions.csv', 'w', newline='') as file:
+                            writer = csv.writer(file)
+                            for quat in self._figquats:
+                                writer.writerow(quat)
+                self._figsave += 1
 
             if self._button2:
                 factor = 1 - 0.003 * (dx + dy)
@@ -450,6 +466,7 @@ class InteractiveCube(plt.Axes):
 
 if __name__ == '__main__':
     import sys
+    import csv
     try:
         N = int(sys.argv[1])
     except:
