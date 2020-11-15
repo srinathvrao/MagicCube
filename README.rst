@@ -21,6 +21,7 @@ Interactive Cube
 To use the matplotlib-based interactive cube, run 
 
      python code/cube_interactive.py
+This script also saves the images to code/images, and the corresponding Quaternion Rotations of the Cube to code/quaternions.csv
 
 If you want a cube with a different number of sides, use e.g.
 
@@ -45,6 +46,10 @@ Controls
 Other - Continued by Srinath (hi there! :D)
 ~~~~~
 I've modified this visualization software to generate a dataset for estimating Quaternion Rotation Matrices using images of a Rubik's Cube in different orientations.
+
+AICrowd had a similar dataset, but it was plagued by differences in illumination, which made it extremely difficult to work with. MagicCube does not have any of those problems!
+
+
 
 This problem can be solved using Machine Learning and Image Regression, but I'm trying out Image Geometry and Simple Linear Algebra for this! - Stay tuned for more updates.
 
