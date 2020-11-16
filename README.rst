@@ -12,8 +12,9 @@ Some assumptions while making the dataset
 All colors are solid.
 
 The initial orientation (Quaternion [0,0,0,0]) has Green facing front, and Orange on top, as shown below.
+
 .. image:: code/initor.png
-  :width: 400
+  :align: left
   :alt: Initial Orientation
 
 I have also ensured that at least two faces are visible when generating the images and their quaternion rotations.
