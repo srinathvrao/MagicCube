@@ -47,9 +47,9 @@ class Cube:
     """Magic Cube Representation"""
     # define some attribues
     default_plastic_color = 'black'
-    default_face_colors = ["w", "#ffcf00",
+    default_face_colors = ["#e8ebeb", "#ffcf00",
                            "#00008f", "#009f0f",
-                           "#ff6f00", "#cf0000",
+                           "#cf0000", "#ff6f00",
                            "gray", "none"]
     base_face = np.array([[1, 1, 1],
                           [1, -1, 1],
