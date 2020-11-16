@@ -6,7 +6,7 @@ import numpy as np
 imgnames = os.listdir("images/")
 
 for imgname in imgnames[2:]:
-	image = cv2.imread("images/test210.jpg")#+imgname)
+	image = cv2.imread("images/test480.jpg")#+imgname)
 	im = image.copy()
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
 	blur = cv2.GaussianBlur(gray, (5,5), 0)

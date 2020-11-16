@@ -9,7 +9,7 @@ This problem can be solved using Machine Learning and Image Regression, but I'm 
 
 Some assumptions while making the dataset
 -----
-All colors are solid.
+All colors are solid, and the color scheme followed in the dataset is the standard scheme for a Rubik's Cube (Green Front, White Top, Red Right, Orange Left, Yellow Bottom, and Blue Back).
 
 The initial orientation (Quaternion [0,0,0,0]) has Green facing front, and Orange on top, as shown below.
 
