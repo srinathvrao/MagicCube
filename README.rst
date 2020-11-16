@@ -1,17 +1,23 @@
 Magic Cube
 ==========
 
-It had to happen someday.  Somebody stop me!
+I've modified this visualization software to generate a dataset for estimating Quaternion Rotation Matrices using images of a Rubik's Cube in different orientations.
 
-.. image:: http://4.bp.blogspot.com/-iruqaXDstKk/UKBejowDVkI/AAAAAAAAZkM/c2tir0qcexQ/s400/test04.png
-   :alt: cube views
+AICrowd had a similar dataset, but it was plagued by differences in illumination, which made it extremely difficult to work with. MagicCube does not have any of those problems!
+
+This problem can be solved using Machine Learning and Image Regression, but I'm trying out Image Geometry and Simple Linear Algebra for this! - Stay tuned for more updates.
+
+Some assumptions while making the dataset
+-----
+All colors are solid.
+
+The initial orientation (Quaternion [0,0,0,0]) has Green facing front, and Orange on top, as shown below.
+.. image:: initor.png
+   :alt: init_view
    :align: left
 
-Authors
--------
+I have also ensured that at least two faces are visible when generating the images and their quaternion rotations.
 
-- **David W. Hogg** (NYU)
-- **Jacob Vanderplas** (UW)
 
 Usage
 -----
@@ -32,26 +38,9 @@ This will create a 5x5x5 cube
 This code should currently be considered to be in beta --
 there are several bugs and the GUI has an incomplete set of features
 
-Controls
-********
-- **Click and drag** to change the viewing angle of the cube.  Holding shift
-  while clicking and dragging adjusts the line-of-sight rotation.
-- **Arrow keys** may also be used to change the viewing angle.  The shift
-  key has the same effect
-- **U/D/L/R/B/F** keys rotate the faces a quarter turn clockwise.  Hold the
-  shift key to rotate counter-clockwise.  Hold a number i to turn the slab
-  at a depth i (e.g. for a 3x3 cube, holding "1" and pressing "L" will turn
-  the center slab).
-
-Other - Continued by Srinath (hi there! :D)
-~~~~~
-I've modified this visualization software to generate a dataset for estimating Quaternion Rotation Matrices using images of a Rubik's Cube in different orientations.
-
-AICrowd had a similar dataset, but it was plagued by differences in illumination, which made it extremely difficult to work with. MagicCube does not have any of those problems!
-
-
-
-This problem can be solved using Machine Learning and Image Regression, but I'm trying out Image Geometry and Simple Linear Algebra for this! - Stay tuned for more updates.
+Acknowledgements
+-------
+Huge thanks to David W. Hogg and Jacob Vanderplas for this amazing Visualization tool!
 
 
 License

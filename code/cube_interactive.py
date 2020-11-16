@@ -213,7 +213,8 @@ class InteractiveCube(plt.Axes):
         self._view = view
         # self._start_rot = Quaternion((1, -1, 0),
         #                                           -np.pi / 6)
-        self._start_rot = Quaternion([ 1,2,3,4])
+        # self._start_rot = Quaternion([ 1,2,3,4])
+        self._start_rot = Quaternion([ 1e-2,1e-2,1e-2,1e-2])
 
         if fig is None:
             fig = plt.gcf()
