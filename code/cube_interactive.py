@@ -214,7 +214,14 @@ class InteractiveCube(plt.Axes):
         # self._start_rot = Quaternion((1, -1, 0),
         #                                           -np.pi / 6)
         # self._start_rot = Quaternion([ 1,2,3,4])
-        self._start_rot = Quaternion([ 1e-2,1e-2,1e-2,1e-2])
+        # x, y, z = np.eye(3)
+        v = np.array([ 1,1e-3,1e-3,1e-3])
+        v_hat = v/(sum([x**2 for x in v])**0.5)
+        print(v_hat)
+        # self._start_rot = Quaternion.from_v_theta(np.array([1,0,0]), 1)
+        # self._start_rot = Quaternion(v_hat)
+        self._start_rot = Quaternion([-0.25867456, 0.67844045 , 0.6308267 , 0.27361231]) 
+
 
         if fig is None:
             fig = plt.gcf()
@@ -338,6 +345,7 @@ class InteractiveCube(plt.Axes):
 # Initial Quaternion: (0.96592583, -0.1830127 ,  0.1830127 , -0)
     def rotate(self, rot):
         self._current_rot = self._current_rot * rot
+        # print(self._current_rot.as_rotation_matrix())
 
     def rotate_face(self, face, turns=1, layer=0, steps=5):
         if not np.allclose(turns, 0):
@@ -441,7 +449,7 @@ class InteractiveCube(plt.Axes):
 
                 self._draw_cube()
                 if self._figsave%10==0:
-                    plt.savefig("images/test"+str(self._figsave)+".jpg")
+                    plt.savefig("images2/test"+str(self._figsave)+".jpg")
                     abcd = ["test"+str(self._figsave)+".jpg"]
                     # array([0.00834558, 0.00809627, 0.01133022, 0.01168023])
                     currot = [np.float(ab) for ab in (str(self._current_rot)[7:-2]).replace(" ","").split(",")]
@@ -450,7 +458,7 @@ class InteractiveCube(plt.Axes):
                     print("Saved ",len(self._figquats))
                     if len(self._figquats) == 50:
                         print("Saving data to file..")
-                        with open('quaternions.csv', 'w', newline='') as file:
+                        with open('quaternions2.csv', 'w', newline='') as file:
                             writer = csv.writer(file)
                             for quat in self._figquats:
                                 writer.writerow(quat)

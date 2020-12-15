@@ -86,6 +86,7 @@ class Quaternion:
     def as_rotation_matrix(self):
         """Return the rotation matrix of the (normalized) quaternion"""
         v, theta = self.as_v_theta()
+        # print(v,theta)
 
         shape = theta.shape
         theta = theta.reshape(-1)
