@@ -215,12 +215,12 @@ class InteractiveCube(plt.Axes):
         #                                           -np.pi / 6)
         # self._start_rot = Quaternion([ 1,2,3,4])
         # x, y, z = np.eye(3)
-        v = np.array([ 1,1e-3,1e-3,1e-3])
+        v = np.array([ 1e-3,1e-3,1e-3,1e-3])
         v_hat = v/(sum([x**2 for x in v])**0.5)
-        print(v_hat)
+        print("Initial orientation:",v)
         # self._start_rot = Quaternion.from_v_theta(np.array([1,0,0]), 1)
-        # self._start_rot = Quaternion(v_hat)
-        self._start_rot = Quaternion([-0.25867456, 0.67844045 , 0.6308267 , 0.27361231]) 
+        self._start_rot = Quaternion(v)
+        # self._start_rot = Quaternion([-0.25867456, 0.67844045 , 0.6308267 , 0.27361231]) 
 
 
         if fig is None:
@@ -448,6 +448,7 @@ class InteractiveCube(plt.Axes):
                 self.rotate(rot1 * rot2)
 
                 self._draw_cube()
+                '''
                 if self._figsave%10==0:
                     plt.savefig("images2/test"+str(self._figsave)+".jpg")
                     abcd = ["test"+str(self._figsave)+".jpg"]
@@ -463,7 +464,7 @@ class InteractiveCube(plt.Axes):
                             for quat in self._figquats:
                                 writer.writerow(quat)
                 self._figsave += 1
-
+                '''
             if self._button2:
                 factor = 1 - 0.003 * (dx + dy)
                 xlim = self.get_xlim()

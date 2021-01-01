@@ -99,6 +99,7 @@ for imgname in imgnames[2:]:
 			cv2.drawContours(image, contours, c, (0, 255, 0), 1)
 			cv2.circle(image, (cX, cY), 2, (0, 0, 0), -1)
 		c+=1
+	
 	# if abs(z-18)<=2: # 2 colors seen
 	# 	print(colors[0])
 	ncolors = []
@@ -144,7 +145,7 @@ for imgname in imgnames[2:]:
 	centerc = []
 	for i in sortedpoints:
 		x,y = ij[i][0], ij[i][1]
-		# image = cv2.line(image, (x[0],x[1]), (y[0],y[1]), (255,0,0), 2)
+		# image = cv2.line(image, (x[0],x[1]), (y[0],y[1]), (0,255,0), 2)
 		# if aa%2 == 0:
 		dists , injn = [],[]
 		# find nearest point for a in colors[a]
@@ -167,22 +168,38 @@ for imgname in imgnames[2:]:
 		else:
 			centerc = ( (3*x[0] - xa[0]) // 2, (3*x[1] - xa[1]) // 2)
 		# aa+=1
-
+	
 	p1 = points[0]
 	p2 = points[1]
 	point2 = ( (5*p1[0] - p2[0]) // 4, ((5*p1[1] - p2[1]) // 4 )-2 )
 	point1 = ( (5*p2[0] - p1[0]) // 4, ((5*p2[1] - p1[1]) // 4 )+3 )
-	cv2.circle(image, point1, 4, (0, 255, 0), 2) # top corner
+	cv2.circle(image, point1, 4, (255, 0, 0), 2) # top corner
 	cv2.circle(image, point2, 4, (255, 0, 0), 2)
-	image = cv2.line(image, point1, point2, (255,0,255), 2)
-	z0 = int(sqrt(26569 - ( (point1[0]-248)**2 + (point1[1]-209)**2 )))
-	z1 = int(sqrt(26569 - ( (point2[0]-248)**2 + (point2[1]-209)**2 )))
+	image = cv2.line(image, point1, point2, (255,255,0), 2)
+	cv2.circle(image, (248,209), 163, (0, 0, 0), 1)
+
+	z0 = int(sqrt(26569 - ( (point1[0]-248)**2 + (209 - point1[1])**2 )))
+	z1 = int(sqrt(26569 - ( (point2[0]-248)**2 + (209 - point2[1])**2 )))
 	print(point1, point2)	
-	rwgcorner = (point1[0],point1[1],z0)
-	rwbcorner = (point2[0],point2[1],z1)
+	rwgcorner = (point1[0]-248,209-point1[1],z0)
+	rwbcorner = (point2[0]-248,209-point2[1],z1)	
 
 	# test330.jpg	-0.25867456	0.67844045	0.6308267	0.27361231
-
+	print("rwgcorner:", rwgcorner)
+	print("rwbcorner:", rwbcorner)
+	rwgcorner_initial = (94.11,-94.11,94.11)
+	rwbcorner_initial = (94.11,-94.11,-94.11)
+	print("rwgcorner_initial:", rwgcorner_initial )
+	print("rwbcorner_initial:", rwbcorner_initial )
+	a = tuple([x-y for x,y in zip(rwgcorner_initial,rwbcorner_initial)])
+	b = tuple([x-y for x,y in zip(rwgcorner,rwbcorner)])
+	print("initial_vect:",a)
+	print("final_vect:",b)
+	print("cross product:",np.cross(a,b))
+	cv2.circle(image, (248,209), 163, (0, 0, 0), 1)
+	cv2.imshow("Original Image", image)
+	cv2.waitKey(0)
+	exit(0)
 	v1 = [115,-115,115]
 	# v1 = v1 / np.linalg.norm(v1)
 	v2 = [ rwgcorner[i] for i in range(3)  ]
