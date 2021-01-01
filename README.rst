@@ -1,6 +1,8 @@
 Magic Cube
 ==========
 
+You can see the problem and how I approached it `here<https://github.com/srinathvrao/RubiksCubeQuaternions/blob/master/code/readme.md>`_.
+
 I've modified this visualization software to generate a dataset for estimating Quaternion Rotation Matrices using images of a Rubik's Cube in different orientations.
 
 AICrowd had a similar dataset, but it was plagued by differences in illumination, which made it extremely difficult to work with. MagicCube does not have any of those problems!
