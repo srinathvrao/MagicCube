@@ -1,7 +1,7 @@
 Magic Cube
 ==========
 
-You can see the problem and how I approached it `here<https://github.com/srinathvrao/RubiksCubeQuaternions/blob/master/code/readme.md>`
+You can see the problem and an overview of how I approached it here: https://github.com/srinathvrao/RubiksCubeQuaternions/blob/master/code/readme.md
 
 I've modified this visualization software to generate a dataset for estimating Quaternion Rotation Matrices using images of a Rubik's Cube in different orientations.
 
