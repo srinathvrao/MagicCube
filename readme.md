@@ -1,4 +1,4 @@
-What the problem is
+The problem
 ------
 There was a [challenge](https://www.aicrowd.com/challenges/aicrowd-blitz-may-2020/problems/orientme) in AIcrowd that required estimating the amount of rotation, i.e., calculate the angle of rotation along the X, Y, and Z axes through regression. 
 
@@ -10,13 +10,13 @@ Esentially, as a consequence of the Gimbal Lock problem, the object cannot rotat
 
 Here, you can see that the rotation along the blue axis is limited to only 2 dimensions, whereas the rotations along the pink and green axes is pretty random (in 3 dimensions).
 
-What the solution to this is
+The solution
 ------
 Quaternions are a simple way to represent complex rotations, algebraically. A Quaternion can be represented in 4 Dimensions. It consists of a unit vector, and the angle of rotation along that vector. 
 
 So, any rotation that you can imagine... In the end, the object's final orientation can be represented by its axis of rotation, and the angle by which it rotated around that axis.
 
-My implementation of the solution
+My implementation
 ------
 First, I ran a simple Grid Detection algorithm using OpenCV, and drew the contours for each sticker, and plotted the centroid(sticker center) of each contour(sticker).
 
@@ -44,6 +44,6 @@ Requirements
 ------
 Python 3.5+, OpenCV, imutils, and numpy.
 
-Running this implementation
+Running the implementation
 ------
 estimate.py in /code contains the code for the above implementation. I've extracted some sample images into the /code/images folder using the MagicCube visualization tool.
