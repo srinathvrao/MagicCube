@@ -1,14 +1,3 @@
----
-title: 'Quaternions and Cubing'
-date: 2020-11-20
-permalink: /posts/2020/11/Cubing/
-tags:
-  - Rubik's Cube
-  - Quaternions
-  - Linear Algebra
-  - 3D Geometry
----
-
 What the problem is
 ------
 There was a [challenge](https://www.aicrowd.com/challenges/aicrowd-blitz-may-2020/problems/orientme) in AIcrowd that required estimating the amount of rotation, i.e., calculate the angle of rotation along the X, Y, and Z axes through regression. 
