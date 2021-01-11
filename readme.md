@@ -39,3 +39,11 @@ ANY rotation that is applied to this cube, happens within a sphere, around the c
 ![Sphere Eq](code/images/sphere.jpg)
 
 So, you have a line segment in 3-D. And you know the initial and final orientations of the same line. It's only a few [quaternion calculations](http://paulbourke.net/geometry/rotate/) to get the entire quaternion!
+
+Requirements
+------
+You need to have OpenCV, imutils, and numpy installed for this to work.
+
+Running this implementation
+------
+estimate.py in /code contains the code for the above implementation. I've extracted images into the /code/images folder.
