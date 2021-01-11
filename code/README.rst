@@ -15,7 +15,7 @@ All colors are solid, and the color scheme followed in the dataset is the standa
 
 The initial orientation (Quaternion [0,0,0,0]) has Green facing front, and Orange on top, as shown below.
 
-.. image:: code/initor.png
+.. image:: initor.png
   :align: left
   :alt: Initial Orientation
 
