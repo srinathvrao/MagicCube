@@ -42,8 +42,8 @@ So, you have a line segment in 3-D. And you know the initial and final orientati
 
 Requirements
 ------
-You need to have OpenCV, imutils, and numpy installed for this to work.
+Python 3.5+, OpenCV, imutils, and numpy.
 
 Running this implementation
 ------
-estimate.py in /code contains the code for the above implementation. I've extracted images into the /code/images folder.
+estimate.py in /code contains the code for the above implementation. I've extracted some sample images into the /code/images folder using the MagicCube visualization tool.
