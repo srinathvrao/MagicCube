@@ -38,7 +38,7 @@ def abs(x):
 		return x
 
 for imgname in imgnames[2:]:
-	image = cv2.imread("images2/test330.jpg")#+imgname) # images2/330
+	image = cv2.imread("images/test250.jpg")#+imgname) # images2/330
 	im = image.copy()
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
 	blur = cv2.GaussianBlur(gray, (3,3), 0)
