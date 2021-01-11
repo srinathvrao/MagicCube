@@ -16,7 +16,7 @@ Quaternions are a simple way to represent complex rotations, algebraically. A Qu
 
 So, any rotation that you can imagine... In the end, the object's final orientation can be represented by its axis of rotation, and the angle by which it rotated around that axis.
 
-An epiphany, and how I did this
+My implementation of the solution
 ------
 First, I ran a simple Grid Detection algorithm using OpenCV, and drew the contours for each sticker, and plotted the centroid(sticker center) of each contour(sticker).
 
